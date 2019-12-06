@@ -389,8 +389,8 @@
 .data
     # each string is terminated with a new line so we wont have to call newline
 
-    # general stuff
-    welcome: .asciiz "   Welcome To AJSM Renting\n"
+    ## general stuff
+    welcome: .asciiz "   Welcome To Car Reservation\n"
     decoration: .asciiz "===============================\n"
     dash: .asciiz "- "
 
