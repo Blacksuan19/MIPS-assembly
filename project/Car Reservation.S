@@ -414,7 +414,7 @@
     pass_prompt: .asciiz "Enter Password: "
 
     # option 1 stuff
-    get_car: .asciiz "Enter the car model number(1-4): "
+    get_car: .asciiz "Enter the car model number(1-5): "
     get_cnumber: .asciiz "Enter car number: "
     car_models: .asciiz "1.Toyota\n2.Honda\n3.Hyundai\n4.Ford\n5.Jeep\n"
     reserved_string: .asciiz "The selected car is reserved!\n"
