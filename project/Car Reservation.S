@@ -85,6 +85,10 @@
         beq $t5, 3, show_hyu
         beq $t5, 4, show_ford
         beq $t5, 5, show_jeep
+        li $t3, 1 # invalid control bit
+        li $t0, 5
+        slt $t2, $t0, $t5  # check if the number is larger than 5
+        beq $t2, 1, car_invalid # invalid if its larger than 5
         j main
 
     # actions fo option 2
@@ -256,6 +260,7 @@
 
     # ask to select one of the listed cars
     prompt_car:
+        li $t3, 0
         li $v0, 4
         la $a0, get_cnumber
         syscall
@@ -333,8 +338,10 @@
     car_invalid:
         la $a1, invalid_car
         jal print_string
+        beq $t3, 0, prompt_car # ask for car number if caller is car selection
+        beq $t3, 1, option1 # ask for model if the caller is the model selection
         j prompt_car
-
+        
     # after the reservation is over we out
     done_reserve:
         la $a1, done_reserve_string # am out of variable names
