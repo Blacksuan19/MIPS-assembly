@@ -15,6 +15,16 @@
 # license numbers are there to make each car unique (otherwise this looks like
 # bad software design)
 
+# this was supposed to be the report: https://docs.google.com/document/d/1NZq-aEFY5y80CWdB2m6uzK56hBqZKA_UHGRQF03Rkak/edit?usp=sharing
+
+# Car Reservation System
+# Group Members:
+#   Abubakar Yagoub Ibrahim        1625897
+#   Hossain Md Shargil             1623499
+#   Al Aboosi Jaafar               1713599
+#   Abdelrahman Mohamed Shaaban    1617015 
+# Section: 2
+
 
 ### actual code (spaghet)
 .text
@@ -29,7 +39,8 @@
         la $a0, welcome
         syscall
         jal decor
-
+        
+        # the options as specificed on the flow chart
         # print the menu options
         la $a1, process1
         jal print_formatted
@@ -65,7 +76,7 @@
 
 
 ### Options Section
-    # actual actions for option 1
+    # for registered users
     option1:
         li $v0, 4
         la $a0, car_models
@@ -90,8 +101,8 @@
         slt $t2, $t0, $t5  # check if the number is larger than 5
         beq $t2, 1, car_invalid # invalid if its larger than 5
         j main
-
-    # actions fo option 2
+    
+    # show the reserved cars 
     option2:
         jal newline
         li $v0, 4
@@ -103,7 +114,7 @@
         jal print_string
         j main
 
-    # actions fo option 3
+    # show the collcted card
     option3:
         jal newline
         li $v0, 4
@@ -114,7 +125,7 @@
         jal print_string
         j main
 
-    # actions fo option 4
+    # show the returned cars
     option4:
         jal newline
         li $v0, 4
@@ -135,7 +146,7 @@
         j main
 
 
-### authentication Section
+### authentication Section (for registered users)
     # prompt and read username
     check_user:
         # load string and space to compare
@@ -358,7 +369,7 @@
         syscall
         jr $ra # return to caller
 
-    # its high up here, i see no soul but i
+    # its high up here, i see no soul but i (4:23 am)
     newline:
         addi $a0, $0, 0xA
         addi $v0, $0, 0xB
